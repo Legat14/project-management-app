@@ -44,6 +44,12 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     password: '123',
 //   };
 
+//   const putBodyExample = {
+//     name: 'Batman',
+//     login: 'BW',
+//     password: '456',
+//   };
+
 //   const signInBodyExample = {
 //     login: 'SM',
 //     password: '123',
@@ -64,6 +70,10 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     const id = users[0]._id;
 //     const user0 = await getUsers(token, id);
 //     console.log('User #0 ', user0);
+//     const editedUser = await putUser(token, putBodyExample, id);
+//     console.log('Edited user: ', editedUser);
+//     const editedUsers = (await getUsers(token)) as IUser[];
+//     console.log('Edited user #0: ', editedUsers[0]);
 //   } else {
 //     console.error(`Error ${(tokenObj as IRequestError).statusCode}: ${(tokenObj as IRequestError).message}`);
 //   }

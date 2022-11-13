@@ -1,6 +1,7 @@
 export enum Methods {
   GET = 'GET',
   POST = 'POST',
+  PUT = 'PUT',
 }
 
 export enum Endpoints {
