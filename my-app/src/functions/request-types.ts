@@ -9,6 +9,8 @@ export enum Endpoints {
   SIGNUP = '/auth/signup',
   SIGNIN = '/auth/signin',
   USERS = '/users',
+  BOARDS = '/boards',
+  BOARDS_SET = '/boardsSet',
 }
 
 export interface ISignUpBody {
@@ -32,10 +34,23 @@ export interface IUser {
   login: 'string';
 }
 
+export interface IBoardBody {
+  title: string;
+  owner: string;
+  users: string[];
+}
+
+export interface IBoard {
+  _id: string; // id доски
+  title: string;
+  owner: string; // id пользователя
+  users: string[]; // список приглашенных пользователей
+}
+
 export interface IRequestParams {
   method: Methods;
   endpoint: Endpoints;
-  body?: ISignUpBody | ISignInBody;
+  body?: ISignUpBody | ISignInBody | IBoardBody;
   token?: string;
   id?: string;
 }

@@ -37,7 +37,7 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 // Для проверки работоспособности можно вставить код ниже в index.tsx и добавить необходимые импорты
 // Можно использовать как образец
 
-// async function example() {
+// async function requestExample() {
 //   const signUpBodyExample = {
 //     name: 'SuperMan',
 //     login: 'SM',
@@ -67,14 +67,39 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     console.log('Token: ', token);
 //     const users = (await getUsers(token)) as IUser[];
 //     console.log('Users: ', users);
-//     const id = users[0]._id;
-//     const user0 = await getUsers(token, id);
+//     const userId = users[0]._id;
+//     const user0 = await getUsers(token, userId);
 //     console.log('User #0 ', user0);
-//     const editedUser = await putUser(token, putBodyExample, id);
+//     const editedUser = await updateUser(token, putBodyExample, userId);
 //     console.log('Edited user: ', editedUser);
 //     const editedUsers = (await getUsers(token)) as IUser[];
 //     console.log('Edited user #0: ', editedUsers[0]);
-//     const deletedUser = await deleteUser(token, id);
+
+//     const boardBodyExample = {
+//       title: 'The Board',
+//       owner: userId,
+//       users: [userId],
+//     };
+
+//     const editedBoardBodyExample = {
+//       title: 'The Edited Board',
+//       owner: userId,
+//       users: [userId],
+//     };
+
+//     const newBoard = await createBoard(token, boardBodyExample);
+//     console.log('New board: ', newBoard);
+//     const boardId = (newBoard as IBoard)._id;
+//     const boards = await getBoards(token);
+//     console.log('All boards: ', boards);
+//     const board = await getBoards(token, boardId);
+//     console.log('Board: ', board);
+//     const editedBoard = await updateBoard(token, editedBoardBodyExample, boardId);
+//     console.log('Edited Board: ', editedBoard);
+//     const deletedBoard = await deleteBoard(token, boardId);
+//     console.log('Deleted board: ', deletedBoard);
+
+//     const deletedUser = await deleteUser(token, userId);
 //     console.log('Deleted user: ', deletedUser);
 //     const reminingUsers = (await getUsers(token)) as IUser[];
 //     console.log('Remaining Users: ', reminingUsers);
@@ -83,4 +108,4 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //   }
 // }
 
-// example();
+// requestExample();
