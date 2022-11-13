@@ -74,6 +74,10 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     console.log('Edited user: ', editedUser);
 //     const editedUsers = (await getUsers(token)) as IUser[];
 //     console.log('Edited user #0: ', editedUsers[0]);
+//     const deletedUser = await deleteUser(token, id);
+//     console.log('Deleted user: ', deletedUser);
+//     const reminingUsers = (await getUsers(token)) as IUser[];
+//     console.log('Remaining Users: ', reminingUsers);
 //   } else {
 //     console.error(`Error ${(tokenObj as IRequestError).statusCode}: ${(tokenObj as IRequestError).message}`);
 //   }
