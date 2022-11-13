@@ -1,6 +1,6 @@
-import { IRequestParams, IToken, IUser } from './request-types';
+import { IRequestError, IRequestParams, IToken, IUser } from './request-types';
 
-export async function request(requestParams: IRequestParams): Promise<IToken | IUser[] | IUser> {
+export async function request(requestParams: IRequestParams): Promise<IToken | IUser[] | IUser | IRequestError> {
   const serverUrl = 'https://react-final-task-backend.onrender.com';
   let requestUrl = serverUrl + requestParams.endpoint;
 
@@ -49,15 +49,24 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     password: '123',
 //   };
 
-//   await signUp(signUpBodyExample);
+//   const signUpResponse = await signUp(signUpBodyExample);
+//   if ((signUpResponse as IRequestError).statusCode) {
+//     console.error(
+//       `Error ${(signUpResponse as IRequestError).statusCode}: ${(signUpResponse as IRequestError).message}`
+//     );
+//   }
 //   const tokenObj = await signIn(signInBodyExample);
-//   const token = 'Bearer ' + tokenObj.token;
-//   console.log('Token: ', token);
-//   const users = (await getUsers(token)) as IUser[];
-//   console.log('Users: ', users);
-//   const id = users[0]._id;
-//   const user0 = await getUsers(token, id);
-//   console.log('User #0 ', user0);
+//   if ((tokenObj as IToken).token) {
+//     const token = 'Bearer ' + (tokenObj as IToken).token;
+//     console.log('Token: ', token);
+//     const users = (await getUsers(token)) as IUser[];
+//     console.log('Users: ', users);
+//     const id = users[0]._id;
+//     const user0 = await getUsers(token, id);
+//     console.log('User #0 ', user0);
+//   } else {
+//     console.error(`Error ${(tokenObj as IRequestError).statusCode}: ${(tokenObj as IRequestError).message}`);
+//   }
 // }
 
 // example();

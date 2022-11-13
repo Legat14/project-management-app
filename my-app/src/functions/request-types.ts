@@ -37,3 +37,8 @@ export interface IRequestParams {
   token?: string;
   id?: string;
 }
+
+export interface IRequestError {
+  statusCode: string;
+  message: string;
+}
