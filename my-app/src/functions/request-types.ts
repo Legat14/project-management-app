@@ -11,6 +11,7 @@ export enum Endpoints {
   USERS = '/users',
   BOARDS = '/boards',
   BOARDS_SET = '/boardsSet',
+  COLUMNS = '/columns',
 }
 
 export interface ISignUpBody {
@@ -47,10 +48,22 @@ export interface IBoard {
   users: string[]; // список приглашенных пользователей
 }
 
+export interface IColumnBody {
+  title: string;
+  order: number;
+}
+
+export interface IColumn {
+  _id: string; // id колонки
+  title: string;
+  order: number;
+  boardId: string[];
+}
+
 export interface IRequestParams {
   method: Methods;
-  endpoint: Endpoints;
-  body?: ISignUpBody | ISignInBody | IBoardBody;
+  endpoint: Endpoints | string;
+  body?: ISignUpBody | ISignInBody | IBoardBody | IColumnBody;
   token?: string;
   id?: string;
 }

@@ -96,6 +96,17 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     console.log('Board: ', board);
 //     const editedBoard = await updateBoard(token, editedBoardBodyExample, boardId);
 //     console.log('Edited Board: ', editedBoard);
+//     const boardsList = await getBordsByUser(token, userId);
+//     console.log('Boards list: ', boardsList);
+
+//     const columnBodyExample = {
+//       title: '1st column',
+//       order: 0,
+//     };
+
+//     const newColumn = await createColumn(token, columnBodyExample, boardId);
+//     console.log('New column: ', newColumn);
+
 //     const deletedBoard = await deleteBoard(token, boardId);
 //     console.log('Deleted board: ', deletedBoard);
 
@@ -103,6 +114,7 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //     console.log('Deleted user: ', deletedUser);
 //     const reminingUsers = (await getUsers(token)) as IUser[];
 //     console.log('Remaining Users: ', reminingUsers);
+//     console.log('Done');
 //   } else {
 //     console.error(`Error ${(tokenObj as IRequestError).statusCode}: ${(tokenObj as IRequestError).message}`);
 //   }
