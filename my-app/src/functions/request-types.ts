@@ -2,6 +2,7 @@ export enum Methods {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
+  PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
 
@@ -12,6 +13,7 @@ export enum Endpoints {
   BOARDS = '/boards',
   BOARDS_SET = '/boardsSet',
   COLUMNS = '/columns',
+  COLUMNS_SET = '/columnsSet',
 }
 
 export interface ISignUpBody {
@@ -53,6 +55,11 @@ export interface IColumnBody {
   order: number;
 }
 
+export interface IColumnsOrder {
+  _id: string;
+  order: number;
+}
+
 export interface IColumn {
   _id: string; // id колонки
   title: string;
@@ -63,7 +70,7 @@ export interface IColumn {
 export interface IRequestParams {
   method: Methods;
   endpoint: Endpoints | string;
-  body?: ISignUpBody | ISignInBody | IBoardBody | IColumnBody;
+  body?: ISignUpBody | ISignInBody | IBoardBody | IColumnBody | IColumnsOrder[];
   token?: string;
   id?: string;
 }
