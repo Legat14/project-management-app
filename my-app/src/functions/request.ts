@@ -104,8 +104,24 @@ export async function request(requestParams: IRequestParams): Promise<IToken | I
 //       order: 0,
 //     };
 
+//     const editedColumnBodyExample = {
+//       title: '2nd column',
+//       order: 1,
+//     };
+
 //     const newColumn = await createColumn(token, columnBodyExample, boardId);
 //     console.log('New column: ', newColumn);
+//     const columnId = (newColumn as IColumn)._id;
+//     const column = await getColumns(token, boardId, columnId);
+//     console.log('Column: ', column);
+//     const editedColumn = await updateColumn(token, editedColumnBodyExample, boardId, columnId);
+//     console.log('Edited column: ', editedColumn);
+//     const columnsList = await getColumns(token, boardId);
+//     console.log('All columns of the board: ', columnsList);
+//     const deletedColumn = await deleteColumn(token, boardId, columnId);
+//     console.log('Deleted column: ', deletedColumn);
+//     const columnsListAfterDeletion = await getColumns(token, boardId);
+//     console.log('All columns of the board after deletion: ', columnsListAfterDeletion);
 
 //     const deletedBoard = await deleteBoard(token, boardId);
 //     console.log('Deleted board: ', deletedBoard);

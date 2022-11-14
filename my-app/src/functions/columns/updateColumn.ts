@@ -1,14 +1,15 @@
 import { request } from '../request';
 import { Endpoints, IColumn, IColumnBody, IRequestError, Methods } from '../request-types';
 
-export async function createColumn(
+export async function updateColumn(
   token: string,
   body: IColumnBody,
-  boardId: string
+  boardId: string,
+  columnId: string
 ): Promise<IColumn | IRequestError> {
   const requestParams = {
-    method: Methods.POST,
-    endpoint: `${Endpoints.BOARDS}/${boardId}${Endpoints.COLUMNS}`,
+    method: Methods.PUT,
+    endpoint: `${Endpoints.BOARDS}/${boardId}${Endpoints.COLUMNS}/${columnId}`,
     token,
     body,
   };
