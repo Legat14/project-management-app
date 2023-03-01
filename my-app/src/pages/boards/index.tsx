@@ -55,18 +55,16 @@ const Boards = () => {
   const oneBoardIsDeleting = useAppSelector((state: RootState) => state.rootReducer.boardsReducer.deleteBoardLoading);
   const isLoading = allBoardsIsGetting || oneBoardIsCreating || oneBoardIsDeleting;
 
-  const renderBoards = (): JSX.Element => {
-    if (isLoading) {
-      return (
+  return (
+    <>
+      {isLoading ? (
         <Grid container className="board__loading">
           <CircularProgress color="primary" />
           <Typography className="board__loading-title" variant="h4">
             {t('loading')}
           </Typography>
         </Grid>
-      );
-    } else {
-      return (
+      ) : (
         <>
           <Box sx={{ display: 'flex', justifyContent: 'center', margin: { xs: '10px 10px 0 0', sm: '10px 0 0 0' } }}>
             <Link to="/boards">
@@ -173,11 +171,10 @@ const Boards = () => {
             </div>
           </Grid>
         </>
-      );
-    }
-  };
-
-  return <>{renderBoards()}</>;
+      )}
+      ;
+    </>
+  );
 };
 
 export default Boards;

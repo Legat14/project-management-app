@@ -60,15 +60,13 @@ const Board = (): JSX.Element => {
   const dispatch = useDispatch<typeof store.dispatch>();
 
   useEffect((): void => {
-    async function getData() {
+    (async function getData() {
       const boardId = store.getState().rootReducer.boardsReducer.boardById?._id;
       if (boardId) {
         await dispatch(getColumnsInBoard(boardId));
         await dispatch(getTasksByBoardId(boardId));
       }
-    }
-
-    getData();
+    })();
   }, [dispatch]);
 
   const userId = useSelector((state: RootState) => state.rootReducer.authReducer.userId);

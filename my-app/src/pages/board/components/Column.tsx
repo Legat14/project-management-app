@@ -161,22 +161,6 @@ function Column(props: {
     }
   };
 
-  const showColumnTitle = (columnIsLoading: boolean): JSX.Element => {
-    if (columnIsLoading) {
-      return (
-        <Grid container className="column__title-loading">
-          <CircularProgress color="secondary" />
-        </Grid>
-      );
-    } else {
-      return (
-        <Typography variant="h5" className="column__title" sx={{ fontFamily: 'monospace' }} onClick={handleTitleClick}>
-          {props.column.title}
-        </Typography>
-      );
-    }
-  };
-
   return (
     <Grid
       container
@@ -215,53 +199,67 @@ function Column(props: {
         }}
       >
         {props.isChosenColumnTitle ? (
-          <Grid container item className="column__title-form-conteiner">
-            <ValidatorForm
-              className="column__title-form"
-              onChange={handleColumnTitleInputChange}
-              onSubmit={handleColumnTitleInputSubmit}
-              noValidate
+          <>
+            <Typography
+              variant="h5"
+              className="column__title"
+              sx={{ fontFamily: 'monospace' }}
+              onClick={handleTitleClick}
             >
-              <TextValidator
-                className="column__title-input"
-                // onBlur={handleColumnTitleInputClose}
-                autoComplete="off"
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="column-title"
-                label={props.columnTranslation.columnNewTitle}
-                name="column-title"
-                autoFocus
-                value={props.currentColumnTitle}
-                validators={['required']}
-                errorMessages={['this field is required', 'column title is not valid']}
-              />
-              <ButtonGroup className="title-form__btn-group">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  sx={{ width: '100%', height: '50px', padding: '0 !important', borderRadius: '15px 0 0 15px' }}
-                >
-                  {props.columnTranslation.changeTitle}
-                </Button>
-                <Button
-                  className="column__close-input-btn"
-                  onClick={handleColumnTitleInputClose}
-                  variant="contained"
-                  color="error"
-                  sx={{ height: '50px', padding: '0 10px !important', borderRadius: '0 15px 15px 0' }}
-                >
-                  <CloseIcon />
-                </Button>
-              </ButtonGroup>
-            </ValidatorForm>{' '}
+              {props.column.title}
+            </Typography>
+            <Grid container item className="column__title-form-conteiner">
+              <ValidatorForm
+                className="column__title-form"
+                onChange={handleColumnTitleInputChange}
+                onSubmit={handleColumnTitleInputSubmit}
+                noValidate
+              >
+                <TextValidator
+                  className="column__title-input"
+                  // onBlur={handleColumnTitleInputClose}
+                  autoComplete="off"
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="column-title"
+                  label={props.columnTranslation.columnNewTitle}
+                  name="column-title"
+                  autoFocus
+                  value={props.currentColumnTitle}
+                  validators={['required']}
+                  errorMessages={['this field is required', 'column title is not valid']}
+                />
+                <ButtonGroup className="title-form__btn-group">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    sx={{ width: '100%', height: '50px', padding: '0 !important', borderRadius: '15px 0 0 15px' }}
+                  >
+                    {props.columnTranslation.changeTitle}
+                  </Button>
+                  <Button
+                    className="column__close-input-btn"
+                    onClick={handleColumnTitleInputClose}
+                    variant="contained"
+                    color="error"
+                    sx={{ height: '50px', padding: '0 10px !important', borderRadius: '0 15px 15px 0' }}
+                  >
+                    <CloseIcon />
+                  </Button>
+                </ButtonGroup>
+              </ValidatorForm>{' '}
+            </Grid>
+          </>
+        ) : null}
+
+        {props.columnIsLoading ? (
+          <Grid container className="column__title-loading">
+            <CircularProgress color="secondary" />
           </Grid>
-        ) : (
-          showColumnTitle(props.columnIsLoading)
-        )}
+        ) : null}
       </Grid>
       <Grid container className="column__tasks-conteiner">
         {props.tasksIsLoading ? (
@@ -269,18 +267,14 @@ function Column(props: {
             <CircularProgress color="secondary" />
           </Grid>
         ) : (
-          tasksOfCurrentColumn.map((task) => {
-            let isChosenTask = false;
-            if (props.clickedEditTaskId === task._id) {
-              isChosenTask = true;
-            }
-            return Task({
+          tasksOfCurrentColumn.map((task) =>
+            Task({
               board: props.board,
               column: props.column,
               task: task,
               key: task._id,
               taskTranslation: props.taskTranslation,
-              isChosenTask,
+              isChosenTask: props.clickedEditTaskId === task._id,
               currentTaskContent: props.currentTaskContent,
               dragItem: props.dragItem,
               setDragItem: props.setDragItem,
@@ -289,8 +283,8 @@ function Column(props: {
               deleteTaskByButtonPress: props.deleteTaskByButtonPress,
               changeTaskContentState: props.changeTaskContentState,
               changeTaskContent: props.changeTaskContent,
-            });
-          })
+            })
+          )
         )}
         <Button
           className="task__create-btn"
